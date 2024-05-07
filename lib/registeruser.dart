@@ -153,9 +153,13 @@ class _RegisterState extends State<Register> {
                       },
                       icon: _isConfirmObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                    enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: secondaryColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: secondaryColor.withOpacity(0.5)),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ),
