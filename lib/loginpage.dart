@@ -48,6 +48,15 @@ class _LoginState extends State<Login> {
         });
       }
     }
+    String? _passwordValidator(String? value){
+      if(value== null || value.isEmpty){
+        return 'パスワードを空にすることはできません';
+      }
+      if(value.length<8){
+        return 'パスワードは8文字以上である必要があります';
+      }
+      return null;
+    }
   @override
   Widget build(BuildContext context) {
     const Color primarycolor=Color(0xff0054A7);
@@ -75,6 +84,12 @@ class _LoginState extends State<Login> {
                     usernamefocusnode.unfocus();
                     FocusScope.of(context).requestFocus(passwordfocusnode);
                   },
+                  validator: (value){
+                    if(value==null || value.isEmpty){
+                      return 'ユーザー名を空にすることはできません';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     hintText: 'ユーザー名',
                     hintStyle: const TextStyle(color:Colors.black,fontSize: 16),
@@ -97,6 +112,7 @@ class _LoginState extends State<Login> {
                     passwordfocusnode.unfocus();
                     _login(context);
                   },
+                  validator:_passwordValidator,
                   decoration: InputDecoration(
                     hintText: 'パスワード',
                     hintStyle: const TextStyle(color: Colors.black,fontSize: 16),
@@ -143,7 +159,7 @@ class _LoginState extends State<Login> {
                       backgroundColor:MaterialStateProperty.all<Color>(primarycolor),
                     ),
                     child: const Text('新しいユーザーを作成する',style:TextStyle(color:Colors.white,fontSize: 16))),
-                  const SizedBox(height:5),
+                  const SizedBox(height:20),
                   if(errormessage.isNotEmpty)
                   Text(errormessage,
                   style:const TextStyle(color:Colors.red,fontSize: 14)),

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
-import 'package:loginscreen/homepage.dart';
+import 'package:loginscreen/loginpage.dart';
 
 
 class Register extends StatefulWidget {
@@ -50,7 +50,7 @@ class _RegisterState extends State<Register> {
       final success = responseData['success'];
 
       if (success) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
       } else {
         setState(() {
           errorMessage = 'ユーザー登録に失敗しました';
